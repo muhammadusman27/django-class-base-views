@@ -11,5 +11,15 @@
 
     <h1>Title : {{ name }}</h1>
     <h3>Message : {{ message }}</h3>
-    <h2>Post :- id : {{ post.id }} | Name : {{ post.name }}</h2>
+    <h2>All Post</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'cbv:redirect-task' pk=post.id %}">{{ post.name }}</a>
+            </li>
+        {% empty %}
+            <li>No Post yet.</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
